@@ -1,0 +1,34 @@
+
+SQL SCRIPT FOR OLADIMEJI OSHINAIKE
+
+
+
+1.Option (2):SELECT MAX(salary) FROM emp WHERE salary < (SELECT MAX(salary) FROM emp);
+
+
+2.SELECT country FROM city c 
+LEFT JOIN games g 
+ON g.city=c.name
+
+
+3.
+i)Left join ensures all rows in the selected table on the left side are queried, and only those rows in the right that match the query will be selected
+Hence:
+SELECT <select_list>
+FROM games g
+LEFT JOIN city c
+ON g.Key = c.Key
+WHERE c.city is NULL
+
+ii)Right join ensures all rows in the selected table on the right sight are queried,and only those rows in the left that match the query will be selected
+Hence:
+SELECT <slect_list>
+FROM games g
+RIGHT Join city c
+ON g.Key = c.Key
+WHERE g.Key is NULL
+
+
+4.SELECT userid, avg(duration) as avg
+FROM sessions WHERE userid in (SELECT userid FROM sessions GROUP BY userid having count(*) > 1)
+GROUP BY userid 
